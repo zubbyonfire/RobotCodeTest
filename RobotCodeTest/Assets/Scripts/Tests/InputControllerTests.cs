@@ -8,6 +8,11 @@ namespace Tests
 {
     public class InputControllerTests
     {
+        //Size of Grid
+        Vector2 gridSize = new Vector2(1, 1);
+        //Coordinates entered
+        Vector2 coordinatePosition = new Vector2(0, 0);
+
         [Test]
         public void StringWhiteSpaceRemoved()
         {
@@ -81,6 +86,48 @@ namespace Tests
             }
 
             Assert.AreEqual(coordinatePos, new Vector2(1, 1));
+        }
+
+        [Test]
+        public void CoordinateXValueNotLessThanZero()
+        {
+            Assert.GreaterOrEqual(coordinatePosition.x, 0);
+        }
+
+        [Test]
+        public void CoordinateYValueNotLessThanZero()
+        {
+            Assert.GreaterOrEqual(coordinatePosition.y, 0);
+        }
+
+        [Test]
+        public void CoordinateXValueNotGreaterThanMaxGridX()
+        {
+            //Update grid size (grids start at 0)
+            float gridX = gridSize.x - 1;
+
+            //Make sure neither grid value is below 0
+            if (gridX < 0)
+            {
+                gridX = 0;
+            }
+
+            Assert.LessOrEqual(coordinatePosition.x, gridX);
+        }
+
+        [Test]
+        public void CoordinateYValueNotGreaterThanMaxGridY()
+        {
+            //Update grid size (grids start at 0)
+            float gridY = gridSize.y - 1;
+
+            //Make sure neither grid value is below 0
+            if (gridY < 0)
+            {
+                gridY = 0;
+            }
+
+            Assert.LessOrEqual(coordinatePosition.y, gridY);
         }
     }
 }

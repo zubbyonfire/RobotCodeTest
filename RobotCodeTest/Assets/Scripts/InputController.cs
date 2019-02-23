@@ -10,16 +10,42 @@ using UnityEngine;
 //Finally dispatch Event based on the string
 public class InputController : MonoBehaviour
 {
+    [SerializeField]
+    private Vector2 grid = new Vector2(5, 5);
+    [SerializeField]
+    private Vector2 updatedGridSize;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Update the grid size, -1 to the X and Y (Grids start at 0)
+        updatedGridSize = new Vector2(UpdateGridSize(grid.x), UpdateGridSize(grid.y));
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Take in a Grid axis, reduce it by 1 - but make sure its not less than 0
+    /// Grids start at 0
+    /// </summary>
+    /// <param name="axis"></param>
+    /// <returns></returns>
+    float UpdateGridSize(float axis)
+    {
+        //Reduce axis value by 1
+        axis--;
+
+        //If value is now less than 0, set to 0 - if the Grid size is 0,0
+        if (axis < 0)
+        {
+            axis = 0;
+        }
+
+        return axis;
     }
 
     /// <summary>
@@ -124,5 +150,32 @@ public class InputController : MonoBehaviour
 
         //Return the coordinates value
         return coordinates;
+    }
+
+    /// <summary>
+    /// Return true if the coordinate is a valid position on the grid
+    /// If the coordinates are not valid return false
+    /// </summary>
+    /// <param name="coordinatePosition"></param>
+    /// <returns></returns>
+    bool ValidCoordinate(Vector2 coordinatePosition)
+    {
+        //Are the coordinates greater/equal to 0 - less than 0 not valid
+        if (coordinatePosition.x >= 0 && coordinatePosition.y >= 0)
+        {
+            //If X position is less than or equal to the updated size && so is the Y, then return true
+            if (coordinatePosition.x <= updatedGridSize.x && coordinatePosition.y <= updatedGridSize.y)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 }
