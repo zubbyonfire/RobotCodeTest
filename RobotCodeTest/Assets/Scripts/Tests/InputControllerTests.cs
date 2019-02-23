@@ -112,6 +112,79 @@ namespace Tests
         }
 
         [Test]
+        public void BreakApartStringByNewLinesIntoList()
+        {
+            //Split a string by new line character
+            string command = "MOVE\nLEFT\nRIGHT";
+
+            string[] commandList = command.Split('\n');
+
+            Assert.AreEqual(commandList.Length, 3);
+        }
+
+        [Test]
+        public void MakeSurePlaceCommandHasCoordinatesAndDirectionValue()
+        {
+            string stringCommand = "PLACE2,3,N";
+            string testString = "";
+            int commaCounter = 0;
+
+            char[] validDirection = { 'N', 'S', 'W', 'E' };
+
+            int totalCorrectParts = 0; //Counter for number of correct parts
+
+            //Place must have 2 commas, so not worth continuing if it dosen't have it
+            if (stringCommand.Split(',').Length - 1 == 2)
+            {
+                //Logic from the Get Coordinates from string test*******************
+                for (int i = 5; i < stringCommand.Length; i++)
+                {
+                    if (stringCommand[i] != ',')
+                    {
+                        testString += stringCommand[i];
+                    }
+                    else if (commaCounter == 0)
+                    {
+                        if (int.TryParse(testString, out int coordPos))
+                        {
+                            totalCorrectParts++;
+                        }
+
+                        testString = "";
+
+                        commaCounter++;
+                    }
+                    else if (commaCounter == 1)
+                    {
+                        if (int.TryParse(testString, out int coordPos))
+                        {
+                            totalCorrectParts++;
+                            commaCounter++; //Increment commaCounter by 1
+                        }
+                    }
+
+                    //We have reached the 2nd comma, if there is 1 value left and its NSWE then it has the final component
+                    if (stringCommand.Length - i == 1)
+                    {
+                        //Loop through all the valid direction values
+                        for (int arrayPos = 0; arrayPos < validDirection.Length; arrayPos++)
+                        {
+                            //If the final char = the validDirection, we have the third component and can break from the loop
+                            if (stringCommand[i] == validDirection[arrayPos])
+                            {
+                                totalCorrectParts++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            //******************************************************************
+
+            Assert.AreEqual(totalCorrectParts, 3);
+        }
+
+        [Test]
         public void GetCoordinatesFromString()
         {
             //PLACE1,1,N
@@ -121,7 +194,7 @@ namespace Tests
             //Make sure to check if string is a valid conversion to int
             //This method will work for any size of grid
 
-            string stringCommand = "PLACE 1,1,N";
+            string stringCommand = "PLACE1,1,N";
 
             string testString = "";
 
@@ -129,7 +202,7 @@ namespace Tests
 
             int commaCounter = 0;
 
-            for (int i = 6; i < stringCommand.Length; i++)
+            for (int i = 5; i < stringCommand.Length; i++)
             {
                 if (stringCommand[i] != ',')
                 {
