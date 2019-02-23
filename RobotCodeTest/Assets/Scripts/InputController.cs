@@ -15,17 +15,53 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private Vector2 updatedGridSize;
 
+    [SerializeField]
+    //private string[] validCommands = { "PLACE", "MOVE", "LEFT", "RIGHT", "REPORT" };
+
+    private delegate void CommandMethod(string textInput);
+
+    private Dictionary<string, CommandMethod> validCommandsDictionary = new Dictionary<string, CommandMethod>();
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //Populate the dictionary with values
+        PopulateDictionary();
+
         //Update the grid size, -1 to the X and Y (Grids start at 0)
         updatedGridSize = new Vector2(UpdateGridSize(grid.x), UpdateGridSize(grid.y));
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Populate the dictionary with all the valid commands and their corresponding method
+    /// </summary>
+    void PopulateDictionary()
     {
-        
+        validCommandsDictionary.Add("PLACE", PlaceRobot);
+        validCommandsDictionary.Add("MOVE", MoveRobot);
+        validCommandsDictionary.Add("LEFT", LeftRotateRobot);
+        validCommandsDictionary.Add("RIGHT", RightRotateRobot);
+        validCommandsDictionary.Add("REPORT", RobotReport);
+    }
+
+    /// <summary>
+    /// When command is entered, filter the text and then check if it's a valid command
+    /// This method should be called when the user presses enter or submit button
+    /// </summary>
+    /// <param name="textInput"></param>
+    public void RecieveWord(string textInput)
+    {
+        string command = textInput;
+
+        command = ConvertToUpper(command); //Make sure all uppercase
+        command = RemoveEmptySpace(command); //Remove all empty spaces
+
+        //If the command is valid, then appropriate method will be called - if not theres an issue
+        if (!ValidCommand(command))
+        {
+            //Display error message
+        }
     }
 
     /// <summary>
@@ -49,22 +85,11 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// Take in a string, filter it to remove white space - check to see if string contains 'X' phrase
-    /// </summary>
-    /// <param name="textInput"></param>
-    void FilterString(string textInput)
-    {
-        //Remove all white spaces in the string
-        //Check to see if string contains x,y,z
-        //If it's the place command - look for the brackets and commas
-    }
-
-    /// <summary>
     /// Return the passed string with no empty spaces
     /// </summary>
     /// <param name="textInput"></param>
     /// <returns></returns>
-    string RemoveWhiteSpace(string textInput)
+    string RemoveEmptySpace(string textInput)
     {
         textInput = textInput.Replace(" ", string.Empty);
 
@@ -178,4 +203,51 @@ public class InputController : MonoBehaviour
             return false;
         }
     }
+
+    /// <summary>
+    /// Loop through all the valid commands, if the textInput is one of the valid commands, then return the commands position in the array
+    /// Get the length of the validCommand then get a substring of that length from the textInput
+    /// If that equals the validCommand then return the current position in the array
+    /// </summary>
+    /// <param name="textInput"></param>
+    /// <returns></returns>
+    bool ValidCommand(string textInput)
+    {
+        //Loop through the dictionary
+        foreach (KeyValuePair<string, CommandMethod> command in validCommandsDictionary)
+        {
+            //Get the length of the key value (command)
+            int commandWordLength = command.Key.Length;
+
+            //If the length is equal to or less then the length of the textInput
+            if (textInput.Length >= commandWordLength)
+            {
+                //Get a substring of the textInput equal to the command key Length
+                string testWord = textInput.Substring(0, commandWordLength);
+
+                //If the testWord = the command key
+                if (testWord == command.Key)
+                {
+                    //Call the value method - passing the text input
+                    command.Value(textInput);
+
+                    //Return true - we found a valid method, no reason to continue
+                    return true;
+                }
+            }
+        }
+
+        //If we get here then no valid command is found, so return false
+        return false;
+    }
+
+    void PlaceRobot(string textInput) { }
+
+    void MoveRobot(string textInput) { }
+
+    void LeftRotateRobot(string textInput) { }
+
+    void RightRotateRobot(string textInput) { }
+
+    void RobotReport(string textInput) { }
 }

@@ -13,8 +13,11 @@ namespace Tests
         //Coordinates entered
         Vector2 coordinatePosition = new Vector2(0, 0);
 
+        private delegate int ReturnMethod();
+
+
         [Test]
-        public void StringWhiteSpaceRemoved()
+        public void StringEmptySpaceRemoved()
         {
             string stringCommand = " M Ove ";
 
@@ -31,6 +34,81 @@ namespace Tests
             stringCommand = stringCommand.ToUpper();
 
             Assert.AreEqual(stringCommand, "MOVE");
+        }
+
+        [Test]
+        public void CommandFoundInArrayOfCommands()
+        {
+            //Get length of validCommand, then try and get a substring of that length from the stringCommand, is they are the same then its a valid otherwise it's not
+            string [] validCommands = {"PLACE", "MOVE", "LEFT", "RIGHT", "REPORT" };
+            string stringCommand = "PLACE1,3,N";
+
+            bool isValid = false; //Is command valid
+
+            //Go through each validCommand
+            foreach (string command in validCommands)
+            {
+                //Get length of the current validCommand
+                int commandLength = command.Length;
+
+                //Is the commandLength less or equal to the validCommand word.length
+                if (stringCommand.Length >= commandLength)
+                {
+                    //Get the substring equal to the commands length
+                    string testWord = stringCommand.Substring(0, commandLength);
+
+                    //If the test word = the command than its a valid command
+                    if (testWord == command)
+                    {
+                        isValid = true;
+                    }
+                }
+            }
+
+            Assert.True(isValid, "Command is not found in the list of valid commands");
+
+        }
+
+        [Test]
+        public void CallMethodValueFromDictionaryUsingCommand()
+        {
+            //Dictionary of strings and delegates
+            Dictionary<string, ReturnMethod> commandDictionary = new Dictionary<string, ReturnMethod>();
+
+            //Command where looking for
+            string stringCommand = "MOVE";
+
+            //Add the following commands and methods to the dictionary
+            commandDictionary.Add("MOVE", ReturnValueA);
+            commandDictionary.Add("LEFT", ReturnValueB);
+
+            //Value to check if we call the dictionary method
+            int value = 0;
+
+            //Loop through dictionary
+            foreach(KeyValuePair<string, ReturnMethod> command in commandDictionary)
+            {
+                //If command = the key
+                if (stringCommand == command.Key)
+                {
+                    //Set value to the value returned from the method
+                    value = command.Value();
+                }
+            }
+
+            Assert.AreEqual(value, 1, "Not found in dictionary");
+        }
+
+        //Return value of 1
+        int ReturnValueA()
+        {
+            return 1;
+        }
+
+        //Return value of 2
+        int ReturnValueB()
+        {
+            return 2;
         }
 
         [Test]
