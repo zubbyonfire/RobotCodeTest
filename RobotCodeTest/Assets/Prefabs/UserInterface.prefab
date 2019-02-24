@@ -1003,7 +1003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 120.7}
+  m_AnchoredPosition: {x: 0, y: 120.70001}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7720975548979853883
@@ -2191,6 +2191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f70c8a68e4b59046a6e57aaf81cbd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeCommandEvent: {fileID: 11400000, guid: 8b644cc8beb671443bbd913571e0bdfb, type: 2}
+  moveCommandEvent: {fileID: 11400000, guid: adb5dcd9fa49f5a47945552fc4cfedf1, type: 2}
+  leftRotateCommandEvent: {fileID: 11400000, guid: 4e643d61420e8054a93fd9f25432b518,
+    type: 2}
+  rightRotateCommandEvent: {fileID: 11400000, guid: 26a139128001e62439bfdd17bc984120,
+    type: 2}
+  reportCommandEvent: {fileID: 11400000, guid: fee15f93d235b3a46b432b85c57022c0, type: 2}
   grid: {x: 5, y: 5}
   updatedGridSize: {x: 0, y: 0}
   commandInputTextBox: {fileID: 7720975548112578313}

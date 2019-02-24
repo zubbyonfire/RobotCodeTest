@@ -12,8 +12,18 @@ using TMPro;
 //Finally dispatch Event based on the string
 public class InputController : MonoBehaviour
 {
+    //Game Events we need
     [SerializeField]
-    private GameEventWithString moveCommand = null;
+    private GameEventWithString placeCommandEvent = null;
+    [SerializeField]
+    private GameEventWithString moveCommandEvent = null;
+    [SerializeField]
+    private GameEventWithString leftRotateCommandEvent = null;
+    [SerializeField]
+    private GameEventWithString rightRotateCommandEvent = null;
+    [SerializeField]
+    private GameEventWithString reportCommandEvent = null;
+
 
     [SerializeField]
     private Vector2 grid = new Vector2(5, 5);
@@ -110,7 +120,7 @@ public class InputController : MonoBehaviour
         validCommandsDictionary.Add("MOVE", MoveRobot);
         validCommandsDictionary.Add("LEFT", LeftRotateRobot);
         validCommandsDictionary.Add("RIGHT", RightRotateRobot);
-        validCommandsDictionary.Add("REPORT", RobotReport);
+        validCommandsDictionary.Add("REPORT", ReportRobot);
     }
 
     /// <summary>
@@ -445,17 +455,29 @@ public class InputController : MonoBehaviour
         command(textInput);
     }
 
-    void PlaceRobot(string textInput) { Debug.Log("Place Robot"); }
-
-    void MoveRobot(string textInput)
-    {
-        Debug.Log("Move Robot");
-        moveCommand.Raise(textInput);
-    }
-
-    void LeftRotateRobot(string textInput) { Debug.Log("Left Robot"); }
-
-    void RightRotateRobot(string textInput) { Debug.Log("Right Robot"); }
-
-    void RobotReport(string textInput) { Debug.Log("Report Robot"); }
+    /// <summary>
+    /// Raise the PlaceRobot event, passing the textInput value
+    /// </summary>
+    /// <param name="textInput"></param>
+    void PlaceRobot(string textInput) { placeCommandEvent.Raise(textInput); }
+    /// <summary>
+    /// Raise the MoveRobot event, passing the textInput value
+    /// </summary>
+    /// <param name="textInput"></param>
+    void MoveRobot(string textInput) { moveCommandEvent.Raise(textInput); }
+    /// <summary>
+    /// Raise the LeftRotateRobot event, passing the textInput value
+    /// </summary>
+    /// <param name="textInput"></param>
+    void LeftRotateRobot(string textInput) { leftRotateCommandEvent.Raise(textInput); }
+    /// <summary>
+    /// Raise the RightRotateRobot event, passing the textInput value
+    /// </summary>
+    /// <param name="textInput"></param>
+    void RightRotateRobot(string textInput) { rightRotateCommandEvent.Raise(textInput); }
+    /// <summary>
+    /// Raise the ReportRobot event, passing the textInput value
+    /// </summary>
+    /// <param name="textInput"></param>
+    void ReportRobot(string textInput) { reportCommandEvent.Raise(textInput); }
 }
