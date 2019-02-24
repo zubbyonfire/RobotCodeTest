@@ -10,6 +10,7 @@ public class PlaceRobot : MonoBehaviour
     [SerializeField]
     private SO2DVector3Array gridPositions;
 
+
     [SerializeField]
     private SODictionary_CharFloat directionDictionary = null;
 

@@ -56,7 +56,10 @@ public class ReportRobot : MonoBehaviour
     private void OnDisable()
     {
         //Stop the current coroutine when this object is disabled
-        StopCoroutine(currentCoroutine);
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
     }
 
     private IEnumerator ShowReport(string report)

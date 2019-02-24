@@ -103,7 +103,15 @@ public class InputController : MonoBehaviour
         {
             CommandMethod commandMethod; //Temp commandMethod to store dictionary value
 
-            commandMethod = validCommandsDictionary[commandArray[arrayPos]]; //Get the dictionary value from using key
+            //Check if current command contains PLACE - if it does then we get the PLACE method
+            if (commandArray[arrayPos].Contains("PLACE"))
+            {
+                commandMethod = validCommandsDictionary["PLACE"];
+            }
+            else
+            {
+                commandMethod = validCommandsDictionary[commandArray[arrayPos]]; //Get the dictionary value from using key
+            }
 
             ExecuteMethod(commandMethod, commandArray[arrayPos]); //Exectute the method, passing the textPos
         }
@@ -362,6 +370,8 @@ public class InputController : MonoBehaviour
                     //Return true - we found a valid method, no reason to continue
                     return true;
                 }
+
+                Debug.Log(testWord);
             }
         }
 
