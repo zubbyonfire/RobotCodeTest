@@ -530,8 +530,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1514092601533425270, guid: 5a8da91deb63d3145a4244951fd954f1,
+        type: 3}
+      propertyPath: m_inputSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456635467101184250, guid: 5a8da91deb63d3145a4244951fd954f1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280196149630374831, guid: 5a8da91deb63d3145a4244951fd954f1,
+        type: 3}
+      propertyPath: m_inputSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280196149630374831, guid: 5a8da91deb63d3145a4244951fd954f1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280196149630374831, guid: 5a8da91deb63d3145a4244951fd954f1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a8da91deb63d3145a4244951fd954f1, type: 3}
+--- !u!1 &4503269587117833422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4503269587718709508, guid: 5a8da91deb63d3145a4244951fd954f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4503269587117833421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4503269587117833423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503269587117833422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3f0f69c46140f4a9ad4eb98a6edfdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotData: {fileID: 0}
+  reportText: {fileID: 0}
 --- !u!1001 &7720975548264263390
 PrefabInstance:
   m_ObjectHideFlags: 0
