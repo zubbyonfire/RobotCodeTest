@@ -16,12 +16,18 @@ public class SetupController : MonoBehaviour
     [SerializeField]
     private SODictionary_CharFloat directionDictionary = null;
 
+    [SerializeField]
+    private GameEvent setupEvent = null;
+
     // Start is called before the first frame update
     void Start()
     {
         SetupGrid();
         SetupDictionary();
         SetupRobot();
+
+        //Raise setup event
+        setupEvent.Raise();
     }
 
     /// <summary>

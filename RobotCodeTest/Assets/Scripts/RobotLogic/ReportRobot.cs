@@ -59,7 +59,7 @@ public class ReportRobot : MonoBehaviour
 
             }
 
-            report = "Position: " + robotData.robotPosition + "\nDirection: " + direction;
+            report = "Position: " + Mathf.RoundToInt(robotData.robotPosition.x) + "," + Mathf.RoundToInt(robotData.robotPosition.y) + "\nDirection: " + direction;
 
             currentCoroutine = ShowReport(report);
             StartCoroutine(currentCoroutine);
