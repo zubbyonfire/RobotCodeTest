@@ -2,35 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "soDictionary_CharFloat", menuName = "soVariable/soDictionary_CharFloat", order = 1)]
-public class SODictionary_CharFloat : ScriptableObject
+namespace RobotCodeTest
 {
-    public Dictionary<char, float> dictionaryValues = new Dictionary<char, float>();
-
-    public float ReturnValue(char keyValue)
+    [CreateAssetMenu(fileName = "soDictionary_CharFloat", menuName = "soVariable/soDictionary_CharFloat", order = 1)]
+    public class SODictionary_CharFloat : ScriptableObject
     {
-        //If key exists in dictionary return its value
-        if (dictionaryValues.ContainsKey(keyValue))
-        {
-            return dictionaryValues[keyValue];
-        }
+        public Dictionary<char, float> dictionaryValues = new Dictionary<char, float>();
 
-        //Else return -1
-        return -1;
-    }
-
-    public char ReturnKey(float value)
-    {
-        //If the value exists in the dictionary, pass back the Key associated with it
-        foreach(KeyValuePair<char, float> pair in dictionaryValues)
+        /// <summary>
+        /// Return value of key passed
+        /// </summary>
+        /// <param name="keyValue"></param>
+        /// <returns></returns>
+        public float ReturnValue(char keyValue)
         {
-            if (pair.Value == value)
+            //If key exists in dictionary return its value
+            if (dictionaryValues.ContainsKey(keyValue))
             {
-                return pair.Key;
+                return dictionaryValues[keyValue];
             }
+
+            //Else return -1
+            return -1;
         }
 
-        //Else return empty
-        return ' ';
+        /// <summary>
+        /// Return key of value passed
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public char ReturnKey(float value)
+        {
+            //If the value exists in the dictionary, pass back the Key associated with it
+            foreach (KeyValuePair<char, float> pair in dictionaryValues)
+            {
+                if (pair.Value == value)
+                {
+                    return pair.Key;
+                }
+            }
+
+            //Else return empty
+            return ' ';
+        }
     }
 }

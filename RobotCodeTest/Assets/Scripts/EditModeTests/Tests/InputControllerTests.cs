@@ -15,7 +15,6 @@ namespace Tests
 
         private delegate int ReturnMethod();
 
-
         [Test]
         public void StringEmptySpaceRemoved()
         {

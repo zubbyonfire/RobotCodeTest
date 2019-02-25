@@ -223,41 +223,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!1 &499355600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6097846597080831547, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6097846597492829816}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &499355601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499355600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb75e7f2e6d81114aa2ff0996faf80dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 42007a3046cb0fa47af0209591e9ee62, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6097846597492829817}
-        m_MethodName: DrawGridVisuals
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1020,7 @@ PrefabInstance:
     - target: {fileID: 2401676891120509006, guid: 760774a12c261b94988e946f27828d64,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.03
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 2401676891120509006, guid: 760774a12c261b94988e946f27828d64,
         type: 3}
@@ -1171,78 +1136,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6097846597080831549, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d2407e5efda0b874096900b5bd648730, type: 2}
-    - target: {fileID: 1895361097629575762, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: positionArray
-      value: 
-      objectReference: {fileID: 11400000, guid: f668e4f48bf6f324b99d0b39793fa518,
-        type: 2}
-    - target: {fileID: 1895361097629575762, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: gridNumberObject
-      value: 
-      objectReference: {fileID: 4522457669363881163, guid: ba513bc9ab656dd47a160d0ee70b2b8b,
-        type: 3}
-    - target: {fileID: 7489865456789498739, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2890856457774036834, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_inputSource
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2890856457774036834, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2890856457774036834, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 129426381938219102, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7650741931297931123, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_inputSource
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7650741931297931123, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7650741931297931123, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4528433035828164882, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9093324833573137148, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9093324833573137148, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8851982695007475720, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
         type: 3}
       propertyPath: m_Mesh
@@ -1305,15 +1198,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b, type: 3}
---- !u!114 &6097846597492829817 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1895361097629575762, guid: 0f450c0d1a4d2f44a94c56cbba6fc46b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6097846597492829816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499355600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 893dc370423392d42bdf24482fdaa26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -3,23 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEventListener : MonoBehaviour
+namespace RobotCodeTest
 {
-    public GameEvent Event;
-    public UnityEvent Response;
-
-    private void OnEnable()
+    public class GameEventListener : MonoBehaviour
     {
-        Event.RegisterListener(this);
-    }
+        //Event we subscribe to
+        public GameEvent Event;
+        //Reponse to that event
+        public UnityEvent Response;
 
-    private void OnDisable()
-    {
-        Event.UnRegisterListener(this);
-    }
+        private void OnEnable()
+        {
+            Event.RegisterListener(this);
+        }
 
-    public void OnEventRaised()
-    {
-        Response.Invoke();
+        private void OnDisable()
+        {
+            Event.UnRegisterListener(this);
+        }
+
+        /// <summary>
+        /// Invoke the response method
+        /// </summary>
+        public void OnEventRaised()
+        {
+            Response.Invoke();
+        }
     }
 }

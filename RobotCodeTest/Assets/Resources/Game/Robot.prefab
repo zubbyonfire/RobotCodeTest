@@ -850,8 +850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: cc00b7fbf47a15b4eb2d70e371049c2e, type: 2}
-  reportText: {fileID: 0}
   errorEvent: {fileID: 11400000, guid: fb10028cfc2285c4088225c990359917, type: 2}
+  reportText: {fileID: 0}
 --- !u!114 &7425351756892367783
 MonoBehaviour:
   m_ObjectHideFlags: 0

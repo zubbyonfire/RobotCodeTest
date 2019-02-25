@@ -3,63 +3,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class ErrorMessageController : MonoBehaviour
+namespace RobotCodeTest
 {
-    //Reference to TMProGUI component
-    private TextMeshProUGUI errorText = null;
-    //Reference to current coroutine
-    private IEnumerator currentCoroutine = null;
-
-    [SerializeField]
-    private float waitTime = 1;
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// What this script does: Shows and hides the errorText message when the error message event is triggered
+    /// </summary>
+    [RequireComponent(typeof(TextMeshProUGUI))]
+    public class ErrorMessageController : MonoBehaviour
     {
-        //Get text component
-        errorText = GetComponent<TextMeshProUGUI>();
+        //Reference to TMProGUI component
+        private TextMeshProUGUI errorText = null;
+        //Reference to current coroutine
+        private IEnumerator currentCoroutine = null;
 
-        //Clear the text
-        errorText.text = string.Empty;
-    }
+        [SerializeField]
+        private float waitTime = 1;
 
-    //On Disable
-    private void OnDisable()
-    {
-        //If current corutine is not null, stop it
-        if (currentCoroutine != null)
+        // Start is called before the first frame update
+        void Start()
         {
-            StopCoroutine(currentCoroutine);
+            //Get text component
+            errorText = GetComponent<TextMeshProUGUI>();
+
+            //Clear the text
+            errorText.text = string.Empty;
         }
-    }
 
-    /// <summary>
-    /// Start the coroutine to display the error
-    /// </summary>
-    /// <param name="textInput"></param>
-    public void RunErrorMessage(string textInput)
-    {
-        currentCoroutine = DisplayError(textInput);
-        StartCoroutine(currentCoroutine);
-    }
+        //On Disable
+        private void OnDisable()
+        {
+            //If current corutine is not null, stop it
+            if (currentCoroutine != null)
+            {
+                StopCoroutine(currentCoroutine);
+            }
+        }
 
-    /// <summary>
-    /// Display the error for X seconds
-    /// </summary>
-    /// <param name="error"></param>
-    /// <returns></returns>
-    private IEnumerator DisplayError(string error)
-    {
-        //Display the error for X seconds
-        errorText.text = error;
+        /// <summary>
+        /// Start the coroutine to display the error
+        /// </summary>
+        /// <param name="textInput"></param>
+        public void RunErrorMessage(string textInput)
+        {
+            currentCoroutine = DisplayError(textInput);
+            StartCoroutine(currentCoroutine);
+        }
 
-        //Display the message to console
-        Debug.Log(errorText.text);
+        /// <summary>
+        /// Display the error for X seconds
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        private IEnumerator DisplayError(string error)
+        {
+            //Display the error for X seconds
+            errorText.text = error;
 
-        yield return new WaitForSeconds(waitTime);
+            //Display the message to console
+            Debug.Log(errorText.text);
 
-        //Clear the text
-        errorText.text = string.Empty;
+            yield return new WaitForSeconds(waitTime);
+
+            //Clear the text
+            errorText.text = string.Empty;
+        }
     }
 }

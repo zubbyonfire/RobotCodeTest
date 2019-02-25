@@ -2,26 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "soGameEvent", menuName = "soGameEvent/soGameEventWithString", order = 1)]
-public class GameEventWithString : ScriptableObject
+namespace RobotCodeTest
 {
-    private List<GameEventListenerWithString> listeners = new List<GameEventListenerWithString>();
-
-    public virtual void Raise(string textInput)
+    [CreateAssetMenu(fileName = "soGameEvent", menuName = "soGameEvent/soGameEventWithString", order = 1)]
+    public class GameEventWithString : ScriptableObject
     {
-        for (int i = listeners.Count - 1; i >= 0; i--)
+        //List of all objects with the GameEventListenerWithString component
+        private List<GameEventListenerWithString> listeners = new List<GameEventListenerWithString>();
+
+        /// <summary>
+        /// Loop through and call each method stored, passing a string
+        /// </summary>
+        /// <param name="textInput"></param>
+        public virtual void Raise(string textInput)
         {
-            listeners[i].OnEventRaised(textInput);
+            for (int i = listeners.Count - 1; i >= 0; i--)
+            {
+                listeners[i].OnEventRaised(textInput);
+            }
         }
-    }
 
-    public void RegisterListener(GameEventListenerWithString listener)
-    {
-        listeners.Add(listener);
-    }
+        /// <summary>
+        /// Add a listener to the list
+        /// </summary>
+        /// <param name="listener"></param>
+        public void RegisterListener(GameEventListenerWithString listener)
+        {
+            listeners.Add(listener);
+        }
 
-    public void UnRegisterListener(GameEventListenerWithString listener)
-    {
-        listeners.Remove(listener);
+        /// <summary>
+        /// Remove a listener
+        /// </summary>
+        /// <param name="listener"></param>
+        public void UnRegisterListener(GameEventListenerWithString listener)
+        {
+            listeners.Remove(listener);
+        }
     }
 }

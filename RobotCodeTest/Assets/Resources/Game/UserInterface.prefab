@@ -230,7 +230,7 @@ MonoBehaviour:
   rightRotateCommandEvent: {fileID: 11400000, guid: 26a139128001e62439bfdd17bc984120,
     type: 2}
   reportCommandEvent: {fileID: 11400000, guid: fee15f93d235b3a46b432b85c57022c0, type: 2}
-  grid: {x: 5, y: 5}
+  grid: {fileID: 11400000, guid: 388ad93b05ab0ec4abdd0c6487d46d05, type: 2}
   updatedGridSize: {x: 0, y: 0}
   commandInputTextBox: {fileID: 3780583815028167172}
   commandViewText: {fileID: 740906795844315559}
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 740906796746072969}
   m_HandleRect: {fileID: 740906796746072968}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999995
   m_Size: 0.5976666
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1243,7 +1243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.00006600603}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &740906796746072975

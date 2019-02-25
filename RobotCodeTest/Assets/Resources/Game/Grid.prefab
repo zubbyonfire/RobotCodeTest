@@ -670,6 +670,7 @@ GameObject:
   - component: {fileID: 6097846597080831549}
   - component: {fileID: 6097846597080831548}
   - component: {fileID: 1895361097629575762}
+  - component: {fileID: 499355601}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -717,7 +718,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2407e5efda0b874096900b5bd648730, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -764,11 +765,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 388ad93b05ab0ec4abdd0c6487d46d05, type: 2}
+  positionArray: {fileID: 11400000, guid: f668e4f48bf6f324b99d0b39793fa518, type: 2}
   gridLineObject: {fileID: 8433065135089793088, guid: a2679b2ce4c7e8249ab7d2acd6791d7c,
     type: 3}
-  gridNumberObject: {fileID: 9172318128523235495, guid: ba513bc9ab656dd47a160d0ee70b2b8b,
+  gridNumberObject: {fileID: 4522457669363881163, guid: ba513bc9ab656dd47a160d0ee70b2b8b,
     type: 3}
-  positionArray: {fileID: 0}
+--- !u!114 &499355601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097846597080831547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb75e7f2e6d81114aa2ff0996faf80dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 42007a3046cb0fa47af0209591e9ee62, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1895361097629575762}
+        m_MethodName: DrawGridVisuals
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &6956214325649867106
 GameObject:
   m_ObjectHideFlags: 0
