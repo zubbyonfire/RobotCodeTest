@@ -19,6 +19,9 @@ namespace RobotCodeTest
         private GameEventWithString errorEvent = null;
 
         //Reference to the report text object in the scene
+        [SerializeField]
+        private GameObject reportTextObject = null;
+        [SerializeField]
         private TextMeshPro reportText = null;
 
         //Current corutine active
@@ -32,7 +35,9 @@ namespace RobotCodeTest
             //Current coroutine thats running
             currentCoroutine = null;
 
-            reportText = GameObject.Find("ReportText").GetComponent<TextMeshPro>();
+            //Find the ReportText object and get its text component
+            reportTextObject = GameObject.Find("ReportText");
+            reportText = reportTextObject.GetComponent<TextMeshPro>();
         }
 
         /// <summary>

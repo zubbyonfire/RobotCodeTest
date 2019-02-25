@@ -231,10 +231,9 @@ MonoBehaviour:
     type: 2}
   reportCommandEvent: {fileID: 11400000, guid: fee15f93d235b3a46b432b85c57022c0, type: 2}
   grid: {fileID: 11400000, guid: 388ad93b05ab0ec4abdd0c6487d46d05, type: 2}
-  updatedGridSize: {x: 0, y: 0}
+  autoExecuteCode: {fileID: 11400000, guid: 335bc6d627bc0554b942d8c2c7f21b54, type: 2}
   commandInputTextBox: {fileID: 3780583815028167172}
   commandViewText: {fileID: 740906795844315559}
-  autoExecuteCode: {fileID: 11400000, guid: 335bc6d627bc0554b942d8c2c7f21b54, type: 2}
   waitTime: 1
 --- !u!1 &740906795734320469
 GameObject:
@@ -1601,7 +1600,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &740906797116492953
 GameObject:
   m_ObjectHideFlags: 0

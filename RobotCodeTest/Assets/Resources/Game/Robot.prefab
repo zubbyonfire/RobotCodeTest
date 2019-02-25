@@ -748,7 +748,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1884591162794338242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +793,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &9087793559716738670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,7 +838,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &5009652768840708877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: cc00b7fbf47a15b4eb2d70e371049c2e, type: 2}
   errorEvent: {fileID: 11400000, guid: fb10028cfc2285c4088225c990359917, type: 2}
+  reportTextObject: {fileID: 0}
   reportText: {fileID: 0}
 --- !u!114 &7425351756892367783
 MonoBehaviour:
@@ -879,7 +883,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &8332372763019029649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +928,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_TypeName: RobotCodeTest.EventString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &3073244896613775727
 GameObject:
   m_ObjectHideFlags: 0
