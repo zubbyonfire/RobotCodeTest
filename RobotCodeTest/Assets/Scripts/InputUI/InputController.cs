@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
 {
     //Game Events we need
     [SerializeField]
+    private GameEventWithString errorEvent = null;
+    [SerializeField]
     private GameEventWithString placeCommandEvent = null;
     [SerializeField]
     private GameEventWithString moveCommandEvent = null;
@@ -42,11 +44,14 @@ public class InputController : MonoBehaviour
     private TMP_InputField commandInputTextBox = null; //Where user enters command
     [SerializeField]
     private TextMeshProUGUI commandViewText = null; //Where commands can be stored to run later
-    [SerializeField]
-    private TextMeshProUGUI errorText = null; //Error text displayed here
 
     [SerializeField]
     private SOBool autoExecuteCode = null; //Bool to auto execute code
+
+    [SerializeField]
+    private float waitTime = 1; //Time to wait, until next command is executed
+    private IEnumerator currentCoroutine = null;
+
 
 
     // Start is called before the first frame update
@@ -59,7 +64,7 @@ public class InputController : MonoBehaviour
         updatedGridSize = new Vector2(UpdateGridSize(grid.x), UpdateGridSize(grid.y));
 
         //Clear the commandViewText
-        commandViewText.text = "";
+        commandViewText.text = string.Empty;
 
         //Set autoExecute to false
         autoExecuteCode.SetValue(false);
@@ -73,6 +78,17 @@ public class InputController : MonoBehaviour
         {
             EnterCommand();
         }
+    }
+
+    //On Disable
+    private void OnDisable()
+    {
+        //If currentCoroutine has a value, stop it
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
     }
 
     /// <summary>
@@ -91,9 +107,19 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// Go through each value in the commantInputTextBox and execute the command
+    /// Method to call to start Executing all the commands
     /// </summary>
-    public void ExecuteCommands()
+    public void StartCommandExecute()
+    {
+        //Set the current coroutine and run it
+        currentCoroutine = ExecuteCommands();
+        StartCoroutine(currentCoroutine);
+    }
+
+    /// <summary>
+    /// Go through each value in the commantInputTextBox and execute the command but with a delay of X seconds between each command
+    /// </summary>
+    private IEnumerator ExecuteCommands()
     {
         commandInputTextBox.interactable = false; //Disable to the input box until all commands run
 
@@ -114,7 +140,12 @@ public class InputController : MonoBehaviour
             }
 
             ExecuteMethod(commandMethod, commandArray[arrayPos]); //Exectute the method, passing the textPos
+
+            yield return new WaitForSeconds(waitTime); //Wait X seconds before executing next instruction
         }
+
+        //Delete all the commands in the box
+        commandViewText.text = string.Empty;
 
         commandInputTextBox.interactable = true; //Disable to the input box until all commands run
     }
@@ -146,7 +177,7 @@ public class InputController : MonoBehaviour
         //If the command is valid, then appropriate method will be called - if not theres an issue
         if (!IsValidCommand(command))
         {
-            //Display error message
+            errorEvent.Raise("Command is not valid - make sure you spelt the command correctly and it's a valid position/direction");
         }
     }
 
@@ -338,14 +369,16 @@ public class InputController : MonoBehaviour
                                     commandViewText.text += "\n" + textInput;
                                 }
                             }
+                            //Return true - we found a valid method, no reason to continue
+                            return true;
                         }
                         else
                         {
-                            Debug.Log("Invalid PLACE");
-                            return false;
+                            //Call the value method - passing the text input
+                            ExecuteMethod(command.Value, textInput);
                         }
                     }
-                    else
+                    else if (textInput == command.Key) //Making sure that a direct comparison is valid - MOVE[ is not valid and will fail this check
                     {
                         //If autoExecute is true then we do the event straight away
                         //If not add it to the CommandViewText
@@ -365,15 +398,13 @@ public class InputController : MonoBehaviour
                                 commandViewText.text += "\n" + textInput;
                             }
                         }
+                        //Return true - we found a valid method, no reason to continue
+                        return true;
                     }
-
-                    //Return true - we found a valid method, no reason to continue
-                    return true;
                 }
-
-                Debug.Log(testWord);
             }
         }
+
 
         //If we get here then no valid command is found, so return false
         return false;

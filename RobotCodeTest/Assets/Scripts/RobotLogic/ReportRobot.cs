@@ -9,7 +9,13 @@ public class ReportRobot : MonoBehaviour
     private RobotData robotData = null;
 
     [SerializeField]
-    private TextMeshPro reportText;
+    private TextMeshPro reportText = null;
+
+    [SerializeField]
+    private GameEventWithString errorEvent = null;
+
+    //Reference to the mainCamera in the scene
+    private Camera mainCamera = null;
 
     private IEnumerator currentCoroutine = null;
 
@@ -20,37 +26,48 @@ public class ReportRobot : MonoBehaviour
 
         //Current coroutine thats running
         currentCoroutine = null;
+
+        //Get the main camera
+        mainCamera = Camera.main;
     }
 
     public void Report(string textInput)
     {
-        string report = "";
-        string direction = "";
-
-        switch (robotData.directionFacing)
+        // Make sure the Robot has been placed -otherwise ignore the command
+        if (robotData.robotPosition.x != -1 && robotData.robotPosition.y != -1)
         {
-            case 'N':
-                direction = "North";
-                break;
-            case 'E':
-                direction = "East";
-                break;
-            case 'S':
-                direction = "South";
-                break;
-            case 'W':
-                direction = "West";
-                break;
-            default:
-                direction = "Error in dictionary";
-                break;
-                
+            string report = "";
+            string direction = "";
+
+            switch (robotData.directionFacing)
+            {
+                case 'N':
+                    direction = "North";
+                    break;
+                case 'E':
+                    direction = "East";
+                    break;
+                case 'S':
+                    direction = "South";
+                    break;
+                case 'W':
+                    direction = "West";
+                    break;
+                default:
+                    direction = "Error in dictionary";
+                    break;
+
+            }
+
+            report = "Position: " + robotData.robotPosition + "\nDirection: " + direction;
+
+            currentCoroutine = ShowReport(report);
+            StartCoroutine(currentCoroutine);
         }
-
-        report = "Position: " + robotData.robotPosition + "\nDirection: " + direction;
-
-        currentCoroutine = ShowReport(report);
-        StartCoroutine(currentCoroutine);
+        else
+        {
+            errorEvent.Raise("Robot hasn't been placed on grid so command is ignored");
+        }
     }
 
     private void OnDisable()
@@ -67,7 +84,7 @@ public class ReportRobot : MonoBehaviour
         //Update the report text
         reportText.text = report;
         //Enable the text for x seconds
-        reportText.enabled = false;
+        reportText.enabled = true;
 
         yield return new WaitForSeconds(2);
 

@@ -10,7 +10,6 @@ public class PlaceRobot : MonoBehaviour
     [SerializeField]
     private SO2DVector3Array gridPositions;
 
-
     [SerializeField]
     private SODictionary_CharFloat directionDictionary = null;
 
@@ -26,7 +25,7 @@ public class PlaceRobot : MonoBehaviour
         Vector2 coordinates = GetCoordinates(textInput);
 
         //Place the Robot on the grid
-        this.transform.position = new Vector3(gridPositions.ReturnArrayValue(coordinates).x, 0.5f, gridPositions.ReturnArrayValue(coordinates).z);
+        this.transform.position = new Vector3(gridPositions.ReturnArrayValue(coordinates).x, 1f, gridPositions.ReturnArrayValue(coordinates).z);
         //Update the robots data - position
         robotData.robotPosition = GetCoordinates(textInput);
 

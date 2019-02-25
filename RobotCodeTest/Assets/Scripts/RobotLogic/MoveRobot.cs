@@ -33,7 +33,7 @@ public class MoveRobot : MonoBehaviour
 
                     if (!ValidMove(moveDirection, robotData.robotPosition))
                     {
-                        //Send error message
+                        errorEvent.Raise("Move ignored as would cause Robot to fall off");
                     }
                     break;
                 case 'E':
@@ -41,15 +41,15 @@ public class MoveRobot : MonoBehaviour
                     moveDirection = new Vector2(1, 0);
                     if (!ValidMove(moveDirection, robotData.robotPosition))
                     {
-                        //Send error message
+                        errorEvent.Raise("Move ignored as would cause Robot to fall off");
                     }
                     break;
                 case 'S':
                     //Move Down
-                    moveDirection = new Vector2(0, 1);
+                    moveDirection = new Vector2(0, -1);
                     if (!ValidMove(moveDirection, robotData.robotPosition))
                     {
-                        //Send error message
+                        errorEvent.Raise("Move ignored as would cause Robot to fall off");
                     }
                     break;
                 case 'W':
@@ -57,17 +57,17 @@ public class MoveRobot : MonoBehaviour
                     moveDirection = new Vector2(-1, 0);
                     if (!ValidMove(moveDirection, robotData.robotPosition))
                     {
-                        //Send error message
+                        errorEvent.Raise("Move ignored as would cause Robot to fall off");
                     }
                     break;
                 default:
-                    //Send error message
+                    errorEvent.Raise("Issue with Direction Dictionary");
                     break;
             }
         }
         else
         {
-            //Send error message
+            errorEvent.Raise("Robot hasn't been placed on grid so command is ignored");
         }
     }
 

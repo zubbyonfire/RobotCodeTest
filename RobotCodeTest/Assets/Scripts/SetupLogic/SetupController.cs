@@ -88,14 +88,14 @@ public class SetupController : MonoBehaviour
                 float yMid = minPos.y + ((gridCellSize.y * arrayY) - (gridCellSize.y / 2));
 
                 //Set the grid position accordingly
-                gridPositions.SetArrayValue(new Vector2(arrayX - 1, arrayY - 1), new Vector3(xMid, gridCenterPosition.y, yMid));
+                gridPositions.SetArrayValue(new Vector2(arrayX - 1, arrayY - 1), new Vector3(xMid, gridCenterPosition.y + 1f, yMid));
 
+                //Enable to show grid positions
                 //Debug.Log(gridPositions.ReturnArrayValue(new Vector2(arrayX - 1, arrayY - 1)));
             }
         }
 
     }
-
 
     /// <summary>
     /// Setup values for Direction Dictionary

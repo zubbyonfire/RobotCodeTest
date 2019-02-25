@@ -15,37 +15,44 @@ public class RightRobot : MonoBehaviour
 
     public void RotateRobotRight(string textInpt)
     {
-        //Rotate the Player right 90
-
-        float newRotationAngle = directionDictionary.ReturnValue(robotData.directionFacing);
-        
-        //If we get back a valid angle - rotate the player
-        if (newRotationAngle != -1)
+        // Make sure the Robot has been placed -otherwise ignore the command
+        if (robotData.robotPosition.x != -1 && robotData.robotPosition.y != -1)
         {
-            //Add 90 to the rotation angle (rotating right)
-            newRotationAngle += 90;
+            //Rotate the Player right 90
+            float newRotationAngle = directionDictionary.ReturnValue(robotData.directionFacing);
 
-            //If rotationAngle = 360, we are facing north
-            if (newRotationAngle >= 360)
+            //If we get back a valid angle - rotate the player
+            if (newRotationAngle != -1)
             {
-                newRotationAngle = 0;
-            }
+                //Add 90 to the rotation angle (rotating right)
+                newRotationAngle += 90;
 
-            //Make sure dictionary returns a valid new direction char
-            if (directionDictionary.ReturnKey(newRotationAngle) != ' ')
-            {
-                //Update the Robots new direction and rotate the robot accordingly
-                this.transform.eulerAngles = new Vector3(0, newRotationAngle, 0);
-                robotData.directionFacing = directionDictionary.ReturnKey(newRotationAngle);
+                //If rotationAngle = 360, we are facing north
+                if (newRotationAngle >= 360)
+                {
+                    newRotationAngle = 0;
+                }
+
+                //Make sure dictionary returns a valid new direction char
+                if (directionDictionary.ReturnKey(newRotationAngle) != ' ')
+                {
+                    //Update the Robots new direction and rotate the robot accordingly
+                    this.transform.eulerAngles = new Vector3(0, newRotationAngle, 0);
+                    robotData.directionFacing = directionDictionary.ReturnKey(newRotationAngle);
+                }
+                else
+                {
+                    errorEvent.Raise("Issue with Direction Dictionary");
+                }
             }
             else
             {
-                //Send error message
+                errorEvent.Raise("Issue with Direction Dictionary Value or Key");
             }
         }
         else
         {
-            //Send error message
+            errorEvent.Raise("Robot hasn't been placed on grid so command is ignored");
         }
     }
 }
